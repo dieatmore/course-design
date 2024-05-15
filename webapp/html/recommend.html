@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能推荐信息</title>
     <style>
       .col-md-1 {
         width: 8.33%;
@@ -88,9 +89,13 @@
       .main {
         border: 2px solid #000;
         border-radius: 8px;
-        height: 80vh;
+        height: 100%;
         margin: 5px 5px;
         padding: 20px;
+        text-align: center;
+      }
+      .main h2 {
+        margin-bottom: 10px;
       }
       .main p {
         font-size: 1.2em;
@@ -99,6 +104,36 @@
       }
       .footer p {
         text-align: center;
+      }
+      .table {
+        display: table;
+        width: 100%;
+        text-align: center;
+      }
+
+      .table-header {
+        display: table-row;
+        background: #4caf50;
+      }
+
+      .table-header-cell {
+        display: table-cell;
+        font-size: 1.2em;
+        padding: 5px;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+        padding: 5px;
+        border-bottom: 1px solid #000;
+      }
+
+      .table-row:hover {
+        background-color: #f2f2f2;
       }
     </style>
   </head>
@@ -112,22 +147,28 @@
       </div>
       <div class="row">
         <div class="nav col-md-12">
-          <a href="#" style="color: red; font-weight: bolder" class="now">首页</a>
+          <a href="home.html">首页</a>
           <a href="formulate.html">制定订单</a>
           <a href="#">管理订单</a>
           <a href="#">管理供应商</a>
-          <a href="recommend.html">智能推荐信息</a>
+          <a href="#" style="color: red; font-weight: bolder" class="now">智能推荐信息</a>
           <a href="login.html" class="right">退出</a>
         </div>
       </div>
       <div class="row">
         <div class="main col-md-12">
-          <p>
-            只做了食品采购员的部分，完成了登录注册模块，制定订单模块，以及订单管理模块。login为登录界面，也就是从index开始，register是注册界面，home是首页（食品采购员）。。。。。。。。。
-            <mark>所有的模块均只有读取JSON的能力，而没有写入JSON的能力</mark>
-            ,user.json存储了用户的数据,
-            。。。。。。。。。其中制定订单模块是根据智能分析模块生成的智能推荐信息进行勾选，从而生成订单。
-          </p>
+          <h2>智能推荐采购信息</h2>
+          <div class="table" id="information">
+            <div class="table-header">
+              <div class="table-header-cell">序号</div>
+              <div class="table-header-cell">食品ID</div>
+              <div class="table-header-cell">食品名称</div>
+              <div class="table-header-cell">食品价格</div>
+              <div class="table-header-cell">采购数量</div>
+              <div class="table-header-cell">库存量</div>
+              <div class="table-header-cell">预期用尽</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -136,5 +177,25 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/information.json"></script>
+    <script>
+      $(function () {
+        $.getJSON('../record/information.json', function (data) {
+          $.each(data, function (index, item) {
+            var row = $('<div>').addClass('table-row')
+            row.append($('<div>').addClass('table-cell').text(item.informationid))
+            row.append($('<div>').addClass('table-cell').text(item.foodid))
+            row.append($('<div>').addClass('table-cell').text(item.foodname))
+            row.append($('<div>').addClass('table-cell').text(item.foodprice))
+            row.append($('<div>').addClass('table-cell').text(item.foodnumber))
+            row.append($('<div>').addClass('table-cell').text(item.inventory))
+            row.append($('<div>').addClass('table-cell').text(item.expectedtime))
+
+            $('#information').append(row)
+          })
+        })
+      })
+    </script>
   </body>
 </html>

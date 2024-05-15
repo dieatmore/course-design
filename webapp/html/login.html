@@ -58,11 +58,11 @@
 
       <div class="data">
         工号:
-        <input type="text" name="usernumber" required />
+        <input type="text" name="usernumber" />
         <br />
         <br />
         密码:
-        <input type="password" name="password" required />
+        <input type="password" name="password" disabled />
         <br />
         <br />
         <button type="button" class="login" disabled>登录</button>
@@ -79,6 +79,7 @@
           if (!number.match(/^\d{10}$/)) {
             alert('工号必须为10位数字！')
           } else {
+            $('input[name=password]').prop('disabled', false)
             var usernumber1 = number
           }
         })
@@ -102,7 +103,7 @@
           $(location).attr('href', 'register.html')
         })
 
-        //登录检验功能
+        //登录检验功能 数据在user.json
         $('.login').click(() => {
           let dis = false
           let usernumber = $('input[name=usernumber]').val()

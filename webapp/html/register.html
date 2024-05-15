@@ -188,7 +188,7 @@
         let password
         $('input[name=password2]').blur(() => {
           password = $('input[name=password2]').val()
-          if (password !== password1) {
+          if (password !== $('input[name=password1]').val()) {
             $('input[name=password2]').val('')
             alert('密码不相同，请重新输入！')
           } else {
@@ -200,21 +200,12 @@
         $('.finish').click(() => {
           alert('注册成功！')
           window.location.href = 'login.html'
-          // $.ajax({
-          //   type: 'post',
-          //   url: '../record/user.json',
-          //   data: {
-          //     usernumber: usernumber1,
-          //     username: username1,
-          //     userid: userid1,
-          //     phone: phone1,
-          //     password: password
-          //   },
-          //   dataType: 'json',
-          //   success: function (data) {
-          //     console.log(data)
-          //   }
-          // })
+          // 检查是否取得正确数据，在控制台查看，检查前将上一条语句注释
+          // console.log($('input[name=usernumber]').val())
+          // console.log($('input[name=username]').val())
+          // console.log($('input[name=userid]').val())
+          // console.log($('input[name=phone]').val())
+          // console.log($('input[name=password2]').val())
         })
       })
     </script>

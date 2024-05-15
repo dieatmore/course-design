@@ -1,0 +1,227 @@
+[
+  {
+    "informationid": 1,
+    "foodid": 1098765432,
+    "foodname": "西红柿",
+    "foodprice": 1.2,
+    "foodnumber": "一百五十斤",
+    "inventory": "四十斤",
+    "expectedtime": "两天"
+  },
+  {
+    "informationid": 2,
+    "foodid": 1023456789,
+    "foodname": "土豆",
+    "foodprice": 1.47,
+    "foodnumber": "一百斤",
+    "inventory": "二十斤",
+    "expectedtime": "一天"
+  },
+  {
+    "informationid": 3,
+    "foodid": 1023456792,
+    "foodname": "胡萝卜",
+    "foodprice": 0.99,
+    "foodnumber": "七十斤",
+    "inventory": "五十斤",
+    "expectedtime": "四天"
+  },
+  {
+    "informationid": 4,
+    "foodid": 1023456802,
+    "foodname": "海带",
+    "foodprice": 2.5,
+    "foodnumber": "七十斤",
+    "inventory": "三十斤",
+    "expectedtime": "七天"
+  },
+  {
+    "informationid": 5,
+    "foodid": 1023456801,
+    "foodname": "紫菜",
+    "foodprice": 3.0,
+    "foodnumber": "一百斤",
+    "inventory": "六十斤",
+    "expectedtime": "九天"
+  },
+  {
+    "informationid": 6,
+    "foodid": 1023456800,
+    "foodname": "豆芽",
+    "foodprice": 0.5,
+    "foodnumber": "九十斤",
+    "inventory": "七十斤",
+    "expectedtime": "八天"
+  },
+  {
+    "informationid": 7,
+    "foodid": 1023456799,
+    "foodname": "生菜",
+    "foodprice": 1.5,
+    "foodnumber": "八十斤",
+    "inventory": "二十斤",
+    "expectedtime": "四天"
+  },
+  {
+    "informationid": 8,
+    "foodid": 1023456798,
+    "foodname": "西兰花",
+    "foodprice": 2.1,
+    "foodnumber": "九十斤",
+    "inventory": "七十斤",
+    "expectedtime": "十天"
+  },
+  {
+    "informationid": 9,
+    "foodid": 1023456797,
+    "foodname": "南瓜",
+    "foodprice": 0.69,
+    "foodnumber": "八十斤",
+    "inventory": "四十斤",
+    "expectedtime": "六天"
+  },
+  {
+    "informationid": 10,
+    "foodid": 1023456796,
+    "foodname": "黄瓜",
+    "foodprice": 0.89,
+    "foodnumber": "一百斤",
+    "inventory": "五十斤",
+    "expectedtime": "六天"
+  },
+  {
+    "informationid": 11,
+    "foodid": 1023456795,
+    "foodname": "茄子",
+    "foodprice": 1.8,
+    "foodnumber": "九十斤",
+    "inventory": "四十斤",
+    "expectedtime": "四天"
+  },
+  {
+    "informationid": 12,
+    "foodid": 1023456794,
+    "foodname": "花菜",
+    "foodprice": 1.2,
+    "foodnumber": "一百斤",
+    "inventory": "八十斤",
+    "expectedtime": "六天"
+  },
+  {
+    "informationid": 13,
+    "foodid": 1023456793,
+    "foodname": "大白菜",
+    "foodprice": 0.75,
+    "foodnumber": "一百斤",
+    "inventory": "五十斤",
+    "expectedtime": "五天"
+  },
+  {
+    "informationid": 14,
+    "foodid": 2023456802,
+    "foodname": "桃子",
+    "foodprice": 2.0,
+    "foodnumber": "五十斤",
+    "inventory": "七十斤",
+    "expectedtime": "十四天"
+  },
+  {
+    "informationid": 15,
+    "foodid": 2023456801,
+    "foodname": "蓝莓",
+    "foodprice": 8.0,
+    "foodnumber": "六十斤",
+    "inventory": "一百斤",
+    "expectedtime": "十三天"
+  },
+  {
+    "informationid": 16,
+    "foodid": 2023456800,
+    "foodname": "猕猴桃",
+    "foodprice": 3.2,
+    "foodnumber": "七十斤",
+    "inventory": "九十斤",
+    "expectedtime": "十二天"
+  },
+  {
+    "informationid": 17,
+    "foodid": 2023456799,
+    "foodname": "樱桃",
+    "foodprice": 7.0,
+    "foodnumber": "八十斤",
+    "inventory": "八十斤",
+    "expectedtime": "十一天"
+  },
+  {
+    "informationid": 18,
+    "foodid": 2023456798,
+    "foodname": "梨",
+    "foodprice": 1.6,
+    "foodnumber": "九十斤",
+    "inventory": "七十斤",
+    "expectedtime": "十天"
+  },
+  {
+    "informationid": 19,
+    "foodid": 2023456797,
+    "foodname": "菠萝",
+    "foodprice": 2.5,
+    "foodnumber": "六十斤",
+    "inventory": "六十斤",
+    "expectedtime": "九天"
+  },
+  {
+    "informationid": 20,
+    "foodid": 2023456796,
+    "foodname": "西瓜",
+    "foodprice": 0.8,
+    "foodnumber": "七十斤",
+    "inventory": "一百斤",
+    "expectedtime": "八天"
+  },
+  {
+    "informationid": 21,
+    "foodid": 2023456795,
+    "foodname": "芒果",
+    "foodprice": 4.2,
+    "foodnumber": "八十斤",
+    "inventory": "九十斤",
+    "expectedtime": "七天"
+  },
+  {
+    "informationid": 22,
+    "foodid": 2023456793,
+    "foodname": "葡萄",
+    "foodprice": 5.0,
+    "foodnumber": "六十斤",
+    "inventory": "七十斤",
+    "expectedtime": "五天"
+  },
+  {
+    "informationid": 23,
+    "foodid": 2023456792,
+    "foodname": "橙子",
+    "foodprice": 1.8,
+    "foodnumber": "七十斤",
+    "inventory": "五十斤",
+    "expectedtime": "四天"
+  },
+  {
+    "informationid": 24,
+    "foodid": 2023456791,
+    "foodname": "香蕉",
+    "foodprice": 2.2,
+    "foodnumber": "九十斤",
+    "inventory": "四十斤",
+    "expectedtime": "三天"
+  },
+  {
+    "informationid": 25,
+    "foodid": 2023456790,
+    "foodname": "苹果",
+    "foodprice": 3.5,
+    "foodnumber": "八十斤",
+    "inventory": "三十斤",
+    "expectedtime": "两天"
+  }
+]

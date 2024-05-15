@@ -3,7 +3,248 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>制定订单</title>
+    <style>
+      .col-md-1 {
+        width: 8.33%;
+      }
+      .col-md-2 {
+        width: 16.67%;
+      }
+      .col-md-3 {
+        width: 25%;
+      }
+      .col-md-4 {
+        width: 33.33%;
+      }
+      .col-md-5 {
+        width: 41.67%;
+      }
+      .col-md-6 {
+        width: 50%;
+      }
+      .col-md-7 {
+        width: 58.33%;
+      }
+      .col-md-8 {
+        width: 66.67%;
+      }
+      .col-md-9 {
+        width: 75%;
+      }
+      .col-md-10 {
+        width: 83.33%;
+      }
+      .col-md-11 {
+        width: 91.67%;
+      }
+      .col-md-12 {
+        width: 100%;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        margin: auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .header {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      .nav {
+        display: flex;
+        border: 2px solid #000;
+        border-radius: 8px;
+        margin-top: 5px;
+        justify-content: flex-end;
+      }
+      .nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding: 15px 20px;
+        border-radius: 8px;
+      }
+      .nav .right {
+        margin-left: auto;
+      }
+      .nav a:hover {
+        background-color: black;
+        color: white;
+      }
+      .nav a.now:hover {
+        background-color: white;
+        color: red;
+      }
+      .main {
+        border: 2px solid #000;
+        border-radius: 8px;
+        height: 100%;
+        margin: 5px 5px;
+        padding: 20px;
+        text-align: center;
+      }
+      .main h2 {
+        margin-bottom: 10px;
+      }
+      .main p {
+        font-size: 1.2em;
+        color: black;
+        text-indent: 2em;
+      }
+      .footer p {
+        text-align: center;
+      }
+      .table {
+        display: table;
+        width: 100%;
+        text-align: center;
+      }
+
+      .table-header {
+        display: table-row;
+        background: #4caf50;
+      }
+
+      .table-header-cell {
+        display: table-cell;
+        font-size: 1.2em;
+        padding: 5px;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+        padding: 5px;
+        border-bottom: 1px solid #000;
+      }
+
+      .table-row:hover {
+        background-color: #f2f2f2;
+      }
+      button {
+        display: inline-block;
+        padding: 15px 25px;
+        margin: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        opacity: 0.5;
+      }
+      .delete {
+        background-color: crimson;
+      }
+      .finish {
+        background-color: chartreuse;
+      }
+      button:hover {
+        opacity: 1;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="header col-md-12">
+          <h1>智控食链助手</h1>
+          <p>食品管理员</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nav col-md-12">
+          <a href="home.html">首页</a>
+          <a href="#" style="color: red; font-weight: bolder" class="now">制定订单</a>
+          <a href="#">管理订单</a>
+          <a href="#">管理供应商</a>
+          <a href="recommend.html">智能推荐信息</a>
+          <a href="login.html" class="right">退出</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main col-md-12">
+          <h2>根据智能推荐信息制定订单</h2>
+          <div class="table" id="information">
+            <div class="table-header">
+              <div class="table-header-cell">序号</div>
+              <div class="table-header-cell">食品ID</div>
+              <div class="table-header-cell">食品名称</div>
+              <div class="table-header-cell">食品价格</div>
+              <div class="table-header-cell">推荐采购数量</div>
+              <div class="table-header-cell">预期用尽</div>
+              <div class="table-header-cell">操作</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="footer col-md-12">
+          <p>东北林业大学第8小组</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/information.json"></script>
+    <script type="text/javascript" src="../record/provide.json"></script>
+    <script>
+      $(function () {
+        $.getJSON('../record/information.json', function (data) {
+          $.getJSON('../record/information.json', function (data1) {
+            $.each(data1, function (index, item1) {
+              $.each(data, function (index, item) {
+                var row = $('<div>').addClass('table-row')
+                row.append($('<div>').addClass('table-cell').text(item.informationid))
+                row.append($('<div>').addClass('table-cell').text(item.foodid))
+                row.append($('<div>').addClass('table-cell').text(item.foodname))
+                row.append($('<div>').addClass('table-cell').text(item.foodprice))
+                row.append($('<div>').addClass('table-cell').text(item.foodnumber))
+                row.append($('<div>').addClass('table-cell').text(item.expectedtime))
+                row.append(
+                  $('<div>')
+                    .addClass('table-cell')
+                    .append(
+                      $('<div>')
+                        .attr('style', 'display:inline-block;margin-right:10px')
+                        .text('选择供应商:')
+                        .append(
+                          $('<select>')
+                            .addClass('provide')
+                            .append($('<option>').text(item1.providename))
+                        )
+                    )
+                    .append(
+                      $('<div>')
+                        .attr('style', 'display:inline-block')
+                        .text('选择时间:')
+                        .append($('<input>').addClass('order').attr('type', 'date'))
+                    )
+                    .append($('<button>').addClass('finish').text('制定'))
+                    .append($('<button>').addClass('delete').text('取消'))
+                )
+                $('#information').append(row)
+              })
+            })
+          })
+        })
+
+        //点击取消按钮删除该信息，但不能保存数据
+        $(document).on('click', '.delete', function () {
+          $(this).closest('.table-row').remove()
+        })
+        $('.select').click(() => {})
+      })
+    </script>
+  </body>
 </html>
