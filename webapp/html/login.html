@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录界面</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url(../images/登录背景.jpg);
+        background-size: cover;
+      }
+      .container {
+        width: 100%;
+      }
+      .header {
+        color: aliceblue;
+        position: fixed;
+        top: 5%;
+        left: 5%;
+      }
+      .data {
+        width: 20%;
+        position: fixed;
+        top: 30%;
+        right: 10%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 8px;
+        padding: 30px 10px;
+        background: white;
+        text-align: center;
+      }
+      .login,
+      .register {
+        background-color: aquamarine;
+        border-color: aquamarine;
+        border-radius: 8px;
+        padding: 10px 30px;
+        border: none;
+      }
+      .login {
+        margin-right: 10px;
+      }
+      .register {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>智控食链助手|身份认证</h1>
+      </div>
+
+      <div class="data">
+        工号:
+        <input type="text" name="usernumber" required />
+        <br />
+        <br />
+        密码:
+        <input type="password" name="password" required />
+        <br />
+        <br />
+        <button type="button" class="login" disabled>登录</button>
+        <button type="button" class="register">注册</button>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/user.json"></script>
+    <script>
+      $(function () {
+        //工号校验
+        $('input[name=usernumber]').blur(() => {
+          let number = $('input[name=usernumber]').val()
+          if (!number.match(/^\d{10}$/)) {
+            alert('工号必须为10位数字！')
+          } else {
+            var usernumber1 = number
+          }
+        })
+
+        //密码校验
+        $('input[name=password]').blur(() => {
+          let password = $('input[name=password]').val()
+          if (
+            !password.match(
+              /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/
+            )
+          ) {
+            alert('密码必须至少6个字符，且包含一个特殊字符，一个大写字母，一个小写字母和一个数字！')
+          } else {
+            $('.login').prop('disabled', false)
+          }
+        })
+
+        //跳转至注册页面
+        $('.register').click(() => {
+          $(location).attr('href', 'register.html')
+        })
+
+        //登录检验功能
+        $('.login').click(() => {
+          let dis = false
+          let usernumber = $('input[name=usernumber]').val()
+          let password = $('input[name=password]').val()
+          $.getJSON('../record/user.json', function (data) {
+            $.each(data, function (index, item) {
+              if (usernumber == item.usernumber && password == item.password) {
+                dis = true
+              }
+            })
+            if (dis) {
+              alert('登录成功！')
+              window.location.href = 'home.html'
+            } else {
+              alert('登录失败！')
+              window.location.href = 'login.html'
+            }
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

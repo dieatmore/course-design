@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .col-md-1 {
+        width: 8.33%;
+      }
+      .col-md-2 {
+        width: 16.67%;
+      }
+      .col-md-3 {
+        width: 25%;
+      }
+      .col-md-4 {
+        width: 33.33%;
+      }
+      .col-md-5 {
+        width: 41.67%;
+      }
+      .col-md-6 {
+        width: 50%;
+      }
+      .col-md-7 {
+        width: 58.33%;
+      }
+      .col-md-8 {
+        width: 66.67%;
+      }
+      .col-md-9 {
+        width: 75%;
+      }
+      .col-md-10 {
+        width: 83.33%;
+      }
+      .col-md-11 {
+        width: 91.67%;
+      }
+      .col-md-12 {
+        width: 100%;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        margin: auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .header {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      .nav {
+        display: flex;
+        border: 2px solid #000;
+        border-radius: 8px;
+        margin-top: 5px;
+        justify-content: flex-end;
+      }
+      .nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding: 10px 20px;
+      }
+      .nav .right {
+        margin-left: auto;
+      }
+      .nav a:hover {
+        background-color: black;
+        color: white;
+      }
+      .main {
+        border: 2px solid #000;
+        border-radius: 8px;
+        height: 80vh;
+        margin: 5px 5px;
+        padding: 20px;
+      }
+      .main p {
+        font-size: 1.2em;
+        color: black;
+        text-indent: 2em;
+      }
+      .footer p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="header col-md-12">
+          <h1>智控食链助手</h1>
+          <p>食品管理员</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nav col-md-12">
+          <a href="#">制定订单</a>
+          <a href="#">管理订单</a>
+          <a href="#">管理供应商</a>
+          <a href="#">智能推荐信息</a>
+          <a href="login.html" class="right">退出</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main col-md-12">
+          <p>
+            只做了食品采购员的部分，完成了登录注册模块，制定订单模块，以及订单管理模块。login为登录界面，也就是从index开始，register是注册界面，home是首页（食品采购员）。。。。。。。。。
+            <mark>所有的模块均只有读取JSON的能力，而没有写入JSON的能力</mark>
+            ,user.json存储了用户的数据,
+            。。。。。。。。。其中制定订单模块是根据智能分析模块生成的智能推荐信息进行勾选，从而生成订单。
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="footer col-md-12">
+          <p>东北林业大学第8小组</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

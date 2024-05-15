@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册界面</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100%;
+      }
+      .header {
+        color: black;
+        position: fixed;
+        top: 5%;
+        left: 5%;
+      }
+      .main {
+        padding: 40px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        width: 20%;
+        position: fixed;
+        top: 20%;
+        left: 40%;
+      }
+      .finish {
+        position: absolute;
+        bottom: 15px;
+        left: 110px;
+        background-color: aquamarine;
+        border-color: aquamarine;
+        border-radius: 8px;
+        padding: 10px 30px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>智控食链助手|用户注册</h1>
+      </div>
+      <div class="main">
+        <form action="register.html" id="register">
+          工号:
+          <input type="text" name="usernumber" />
+          <br />
+          <br />
+          姓名:
+          <input type="text" name="username" disabled />
+          <br />
+          <br />
+
+          身份证号码:
+          <br />
+          <input type="text" name="userid" disabled />
+          <br />
+          <br />
+
+          电话:
+          <input type="text" name="phone" disabled />
+          <br />
+          <br />
+
+          职位:
+          <br />
+          <label>
+            <input type="radio" checked name="zhiwei" disabled />
+            食品采购员
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="zhiwei" disabled />
+            食品运输员
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="zhiwei" disabled />
+            食品库存管理员
+          </label>
+          <br />
+          <br />
+          输入密码:
+          <input type="password" name="password1" disabled />
+          <br />
+          <br />
+          重复密码:
+          <input type="password" name="password2" disabled />
+          <br />
+          <br />
+          <br />
+
+          <button type="button" class="finish" disabled>注册</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/user.json"></script>
+    <script>
+      $(function () {
+        // 工号校验是否合理且是否重复
+        let usernumber1
+        $('input[name=usernumber]').blur(function () {
+          let number = $(this).val()
+          if (!number.match(/^\d{10}$/)) {
+            $('input[name=usernumber]').val('')
+            alert('工号必须为10位数字！')
+            return // 直接返回以避免继续执行剩余的代码
+          }
+
+          // 检查工号是否重复
+          $.getJSON('../record/user.json', function (data) {
+            let dis = false
+            $.each(data, function (index, item) {
+              if (number == item.usernumber) {
+                alert('用户名重复！')
+                $('input[name=usernumber]').val('')
+                dis = true
+                return false
+              }
+            })
+            if (!dis) {
+              $('input[name=username]').prop('disabled', false)
+            }
+          })
+        })
+
+        //姓名检验（中文）
+        $('input[name=username]').blur(() => {
+          let name = $('input[name=username]').val()
+          if (!name.match(/^(?:[\u4e00-\u9fa5·]{2,16})$/)) {
+            $('input[name=username]').val('')
+            alert('姓名不准确，必须为中文！')
+          } else {
+            $('input[name=userid]').prop('disabled', false)
+          }
+        })
+
+        //身份证号检验
+        $('input[name=userid]').blur(() => {
+          let id = $('input[name=userid]').val()
+          if (
+            !id.match(
+              /^[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|10|11|12)(?:0[1-9]|[1-2]\d|30|31)\d{3}[\dXx]$/
+            )
+          ) {
+            $('input[name=userid]').val('')
+            alert('请输入正确身份证号！')
+          } else {
+            $('input[name=phone]').prop('disabled', false)
+          }
+        })
+
+        //电话检验
+        $('input[name=phone]').blur(() => {
+          let phone = $('input[name=phone]').val()
+          if (!phone.match(/^(?:(?:\+|00)86)?1[3-9]\d{9}$/)) {
+            $('input[name=phone]').val('')
+            alert('手机号必须13,14,15,16,17,18,19开头')
+          } else {
+            $('input[name=password1]').prop('disabled', false)
+          }
+        })
+
+        //职位只做了食品采购员的功能，注册时不可更改
+
+        //第一遍密码校验
+        $('input[name=password1]').blur(() => {
+          let password = $('input[name=password1]').val()
+          if (
+            !password.match(
+              /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/
+            )
+          ) {
+            $('input[name=password1]').val('')
+            alert('密码必须至少6个字符，且包含一个特殊字符，一个大写字母，一个小写字母和一个数字！')
+          } else {
+            $('input[name=password2]').prop('disabled', false)
+          }
+        })
+
+        //第二遍密码校验
+        let password
+        $('input[name=password2]').blur(() => {
+          password = $('input[name=password2]').val()
+          if (password !== password1) {
+            $('input[name=password2]').val('')
+            alert('密码不相同，请重新输入！')
+          } else {
+            $('.finish').prop('disabled', false)
+          }
+        })
+
+        //传递数据
+        $('.finish').click(() => {
+          alert('注册成功！')
+          window.location.href = 'login.html'
+          // $.ajax({
+          //   type: 'post',
+          //   url: '../record/user.json',
+          //   data: {
+          //     usernumber: usernumber1,
+          //     username: username1,
+          //     userid: userid1,
+          //     phone: phone1,
+          //     password: password
+          //   },
+          //   dataType: 'json',
+          //   success: function (data) {
+          //     console.log(data)
+          //   }
+          // })
+        })
+      })
+    </script>
+  </body>
+</html>
