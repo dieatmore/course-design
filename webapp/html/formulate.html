@@ -201,41 +201,33 @@
     <script>
       $(function () {
         $.getJSON('../record/information.json', function (data) {
-          $.getJSON('../record/information.json', function (data1) {
-            $.each(data1, function (index, item1) {
-              $.each(data, function (index, item) {
-                var row = $('<div>').addClass('table-row')
-                row.append($('<div>').addClass('table-cell').text(item.informationid))
-                row.append($('<div>').addClass('table-cell').text(item.foodid))
-                row.append($('<div>').addClass('table-cell').text(item.foodname))
-                row.append($('<div>').addClass('table-cell').text(item.foodprice))
-                row.append($('<div>').addClass('table-cell').text(item.foodnumber))
-                row.append($('<div>').addClass('table-cell').text(item.expectedtime))
-                row.append(
+          $.each(data, function (index, item) {
+            var row = $('<div>').addClass('table-row')
+            row.append($('<div>').addClass('table-cell').text(item.informationid))
+            row.append($('<div>').addClass('table-cell').text(item.foodid))
+            row.append($('<div>').addClass('table-cell').text(item.foodname))
+            row.append($('<div>').addClass('table-cell').text(item.foodprice))
+            row.append($('<div>').addClass('table-cell').text(item.foodnumber))
+            row.append($('<div>').addClass('table-cell').text(item.expectedtime))
+            row.append(
+              $('<div>')
+                .addClass('table-cell')
+                .append(
                   $('<div>')
-                    .addClass('table-cell')
-                    .append(
-                      $('<div>')
-                        .attr('style', 'display:inline-block;margin-right:10px')
-                        .text('选择供应商:')
-                        .append(
-                          $('<select>')
-                            .addClass('provide')
-                            .append($('<option>').text(item1.providename))
-                        )
-                    )
-                    .append(
-                      $('<div>')
-                        .attr('style', 'display:inline-block')
-                        .text('选择时间:')
-                        .append($('<input>').addClass('order').attr('type', 'date'))
-                    )
-                    .append($('<button>').addClass('finish').text('制定'))
-                    .append($('<button>').addClass('delete').text('取消'))
+                    .attr('style', 'display:inline-block;margin-right:10px')
+                    .text('选择供应商：')
+                    .append($('<select>').addClass('provide'))
                 )
-                $('#information').append(row)
-              })
-            })
+                .append(
+                  $('<div>')
+                    .attr('style', 'display:inline-block')
+                    .text('选择时间：')
+                    .append($('<input>').addClass('order').attr('type', 'date'))
+                )
+                .append($('<button>').addClass('finish').text('制定'))
+                .append($('<button>').addClass('delete').text('取消'))
+            )
+            $('#information').append(row)
           })
         })
 
