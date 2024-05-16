@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>制定订单</title>
+    <title>订单管理页面</title>
     <style>
       .col-md-1 {
         width: 8.33%;
@@ -166,8 +166,8 @@
       <div class="row">
         <div class="nav col-md-12">
           <a href="home.html">首页</a>
-          <a href="#" style="color: red; font-weight: bolder" class="now">制定订单</a>
-          <a href="manage.html">管理订单</a>
+          <a href="formulate.html">制定订单</a>
+          <a href="#" style="color: red; font-weight: bolder" class="now">管理订单</a>
           <a href="manageprovide.html">管理供应商</a>
           <a href="recommend.html">智能推荐信息</a>
           <a href="login.html" class="right">退出</a>
@@ -175,15 +175,16 @@
       </div>
       <div class="row">
         <div class="main col-md-12">
-          <h2>根据智能推荐信息制定订单</h2>
+          <h2>管理订单</h2>
           <div class="table" id="information">
             <div class="table-header">
-              <div class="table-header-cell">序号</div>
               <div class="table-header-cell">食品ID</div>
               <div class="table-header-cell">食品名称</div>
               <div class="table-header-cell">食品价格</div>
-              <div class="table-header-cell">推荐采购数量/斤</div>
-              <div class="table-header-cell">预期用尽</div>
+              <div class="table-header-cell">采购数量/斤</div>
+              <div class="table-header-cell">供应商名称</div>
+              <div class="table-header-cell">总价格</div>
+              <div class="table-header-cell">订单时间</div>
               <div class="table-header-cell">操作</div>
             </div>
           </div>
@@ -196,75 +197,27 @@
       </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../record/information.json"></script>
-    <script type="text/javascript" src="../record/provide.json"></script>
+    <script type="text/javascript" src="../record/order.json"></script>
     <script>
       $(function () {
-        $.getJSON('../record/provide.json', function (providedata) {
-          $.getJSON('../record/information.json', function (data) {
-            $.each(data, function (index, item) {
-              var row = $('<div>').addClass('table-row')
-              row.append($('<div>').addClass('table-cell').text(item.informationid))
-              row.append($('<div>').addClass('table-cell').addClass('foodid').text(item.foodid))
-              row.append($('<div>').addClass('table-cell').addClass('foodname').text(item.foodname))
-              row.append(
-                $('<div>').addClass('table-cell').addClass('foodprice').text(item.foodprice)
-              )
-              row.append(
-                $('<div>').addClass('table-cell').addClass('foodnumber').text(item.foodnumber)
-              )
-              row.append(
-                $('<div>').addClass('table-cell').addClass('expectedtime').text(item.expectedtime)
-              )
-              var provideselect = $('<select>').addClass('provide')
-              $.each(providedata, function (index, provide) {
-                provideselect.append($('<option>').text(provide.providename))
-              })
-              row.append(
-                $('<div>')
-                  .addClass('table-cell')
-                  .append(
-                    $('<div>')
-                      .attr('style', 'display:inline-block;margin-right:10px')
-                      .text('选择供应商：')
-                      .append(provideselect)
-                      .addClass('selectprovide')
-                  )
-                  .append(
-                    $('<div>')
-                      .attr('style', 'display:inline-block')
-                      .text('选择时间：')
-                      .append($('<input>').addClass('ordertime').attr('type', 'date'))
-                  )
-                  .append($('<button>').addClass('finish').text('制定'))
-              )
-              $('#information').append(row)
-            })
+        $.getJSON('../record/order.json', function (data) {
+          $.each(data, function (index, item) {
+            var row = $('<div>').addClass('table-row')
+            row.append($('<div>').addClass('table-cell').text(item.foodid))
+            row.append($('<div>').addClass('table-cell').text(item.foodname))
+            row.append($('<div>').addClass('table-cell').text(item.foodprice))
+            row.append($('<div>').addClass('table-cell').text(item.foodnumber))
+            row.append($('<div>').addClass('table-cell').text(item.providename))
+            row.append($('<div>').addClass('table-cell').text(item.allprice))
+            row.append($('<div>').addClass('table-cell').text(item.ordertime))
+            row.append($('<button>').addClass('delete').text('取消订单'))
+
+            $('#information').append(row)
           })
         })
-        //点击制定按钮后生成订单信息在控制台
-        $(document).on('click', '.finish', function () {
-          var row = $(this).closest('.table-row')
-
-          var foodid = row.find('.foodid').text()
-          var foodname = row.find('.foodname').text()
-          var foodprice = row.find('.foodprice').text()
-          var foodnumber = row.find('.foodnumber').text()
-          var providename = row.find('.selectprovide option:selected').text()
-          var ordertime = row.find('.ordertime').val()
-          var allprice = foodprice * foodnumber
-
-          //制定成功后删除该信息
+        //点击取消按钮删除该信息，但不能保存数据
+        $(document).on('click', '.delete', function () {
           $(this).closest('.table-row').remove()
-
-          alert('该订单制定成功！')
-          console.log('Food ID:', foodid)
-          console.log('Food Name:', foodname)
-          console.log('Food Price:', foodprice)
-          console.log('Food Number:', foodnumber)
-          console.log('Provide Name:', providename)
-          console.log('finally price', allprice)
-          console.log('Order Time:', ordertime)
         })
       })
     </script>
