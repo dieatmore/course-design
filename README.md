@@ -6,13 +6,13 @@
 
 ## Development Environments
 
-+ VS Code
-+ Live SerVer
+- VS Code
+- Live SerVer
 
 ## Specific
 
-+ 通过Live SerVer完成对JSON文件的数据读取功能
-+ 正则化表达式
+- 通过 Live SerVer 完成对 JSON 文件的数据读取功能
+- 正则化表达式
 
 ## Summary
 

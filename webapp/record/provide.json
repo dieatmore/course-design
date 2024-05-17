@@ -1,26 +1,212 @@
 [
   {
     "provideid": 1234567890,
-    "providename": "东北林业大学"
+    "providename": "东北林业大学",
+    "order": [1239876880, 9087125321, 3421564330],
+    "fraction": 10.0
   },
   {
     "provideid": 1244567890,
-    "providename": "东北农业大学"
+    "providename": "东北农业大学",
+    "order": [1524567880, 9084855321, 3421565990],
+    "fraction": 8.1
   },
   {
     "provideid": 1224567890,
-    "providename": "哈尔滨工业大学"
+    "providename": "哈尔滨工业大学",
+    "order": [1234567880, 9087655321, 3421567890],
+    "fraction": 8.6
   },
   {
     "provideid": 1234567899,
-    "providename": "清华大学"
+    "providename": "清华大学",
+    "order": [1234931880, 9063955321, 3498567890, 9087125422],
+    "fraction": 9.4
   },
   {
     "provideid": 1238567890,
-    "providename": "北京大学"
+    "providename": "北京大学",
+    "order": [1234901880, 3063955321, 3298567890],
+    "fraction": 9.1
   },
   {
-    "provideid": 1234564890,
-    "providename": "我家"
+    "provideid": 1234567891,
+    "providename": "复旦大学",
+    "order": [1239876881, 9087125322],
+    "fraction": 7.8
+  },
+  {
+    "provideid": 1244567891,
+    "providename": "上海交通大学",
+    "order": [1524567881, 9084855322],
+    "fraction": 6.5
+  },
+  {
+    "provideid": 1224567891,
+    "providename": "浙江大学",
+    "order": [1234567881, 9087655322, 3421567891],
+    "fraction": 9.7
+  },
+  {
+    "provideid": 1234567898,
+    "providename": "中国科学技术大学",
+    "order": [1234931881, 9063955322, 3498567891],
+    "fraction": 8.3
+  },
+  {
+    "provideid": 1238567891,
+    "providename": "南京大学",
+    "order": [1234901881, 3063955322, 3298567891],
+    "fraction": 7.2
+  },
+  {
+    "provideid": 1234567892,
+    "providename": "武汉大学",
+    "order": [1239876882, 9087125323, 3421564332],
+    "fraction": 6.9
+  },
+  {
+    "provideid": 1244567892,
+    "providename": "华中科技大学",
+    "order": [1524567882, 9084855323, 3421565992, 9087125325, 3421564334],
+    "fraction": 7.5
+  },
+  {
+    "provideid": 1224567892,
+    "providename": "西安交通大学",
+    "order": [1234567882, 9087655323, 3421567892],
+    "fraction": 8.0
+  },
+  {
+    "provideid": 1234567897,
+    "providename": "四川大学",
+    "order": [1234931882, 9063955323, 3498567892],
+    "fraction": 9.1
+  },
+  {
+    "provideid": 1238567892,
+    "providename": "中山大学",
+    "order": [1234901882, 3063955323, 3298567892],
+    "fraction": 7.9
+  },
+  {
+    "provideid": 1234567893,
+    "providename": "南开大学",
+    "order": [1239876883, 9087125324, 3421564333],
+    "fraction": 6.3
+  },
+  {
+    "provideid": 1244567893,
+    "providename": "天津大学",
+    "order": [1524567883, 9084855324, 3421565993],
+    "fraction": 8.4
+  },
+  {
+    "provideid": 1224567893,
+    "providename": "北京师范大学",
+    "order": [1234567883, 9087655324, 3421567893],
+    "fraction": 7.6
+  },
+  {
+    "provideid": 1234567896,
+    "providename": "厦门大学",
+    "order": [1234931883, 9063955324, 3498567893],
+    "fraction": 8.8
+  },
+  {
+    "provideid": 1238567893,
+    "providename": "山东大学",
+    "order": [1234901883, 3063955324, 3298567893],
+    "fraction": 7.3
+  },
+  {
+    "provideid": 1234567894,
+    "providename": "康师傅",
+    "order": [1239876884],
+    "fraction": 9.2
+  },
+  {
+    "provideid": 1244567894,
+    "providename": "统一企业",
+    "order": [1524567884, 9084855325, 3421565994, 3421567894],
+    "fraction": 8.7
+  },
+  {
+    "provideid": 1224567894,
+    "providename": "娃哈哈",
+    "order": [1234567884, 9087655325],
+    "fraction": 7.4
+  },
+  {
+    "provideid": 1234567895,
+    "providename": "雀巢",
+    "order": [1234931884, 9063955325, 3498567894],
+    "fraction": 6.8
+  },
+  {
+    "provideid": 1238567894,
+    "providename": "百事公司",
+    "order": [1234901884, 3063955325, 3298567894],
+    "fraction": 7.1
+  },
+  {
+    "provideid": 1234567895,
+    "providename": "可口可乐",
+    "order": [1239876885, 9087125326, 3421564335],
+    "fraction": 8.5
+  },
+  {
+    "provideid": 1244567895,
+    "providename": "蒙牛乳业",
+    "order": [1524567885, 9084855326, 3421565995],
+    "fraction": 9.0
+  },
+  {
+    "provideid": 1224567895,
+    "providename": "伊利集团",
+    "order": [1234567885, 9087655326, 3421567895],
+    "fraction": 7.9
+  },
+  {
+    "provideid": 1234567894,
+    "providename": "亿滋国际",
+    "order": [1234931885, 9063955326, 3498567895],
+    "fraction": 6.5
+  },
+  {
+    "provideid": 1238567895,
+    "providename": "玛氏公司",
+    "order": [1234901885, 3063955326, 3298567895],
+    "fraction": 8.2
+  },
+  {
+    "provideid": 1234567896,
+    "providename": "联合利华",
+    "order": [1239876886, 9087125327, 3421564336],
+    "fraction": 7.7
+  },
+  {
+    "provideid": 1244567896,
+    "providename": "宝洁公司",
+    "order": [1524567886, 9084855327, 3421565996],
+    "fraction": 6.9
+  },
+  {
+    "provideid": 1224567896,
+    "providename": "金拱门",
+    "order": [1234567886],
+    "fraction": 8.1
+  },
+  {
+    "provideid": 1234567893,
+    "providename": "星巴克",
+    "order": [1234931886, 3498567896],
+    "fraction": 9.3
+  },
+  {
+    "provideid": 1238567896,
+    "providename": "肯德基",
+    "order": [1234901886, 3063955327, 3298567896],
+    "fraction": 7.5
   }
 ]

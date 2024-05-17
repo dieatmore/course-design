@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100%;
+      }
+      .header {
+        color: black;
+        position: fixed;
+        top: 5%;
+        left: 5%;
+      }
+      .main {
+        padding: 40px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        width: 20%;
+        position: fixed;
+        top: 25%;
+        left: 40%;
+      }
+      .back {
+        position: relative;
+        top: 50px;
+        left: 50px;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        font-size: large;
+        border: 2px solid #000;
+        padding: 10px 15px;
+        border-radius: 12px;
+      }
+      .finish {
+        position: absolute;
+        bottom: 15px;
+        left: 110px;
+        background-color: aquamarine;
+        border-color: aquamarine;
+        border-radius: 8px;
+        padding: 10px 30px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>智控食链助手|添加供应商</h1>
+        <a href="manageprovide.html" class="back">返回</a>
+      </div>
+      <div class="main">
+        <form class="provide">
+          供应商编号：<input type="text" name="provideid">
+          <br>
+          <br>
+          供应商名称：<input type="text" name="providename" disabled>
+          <br>
+          <br>
+          供应商评价：<input type="text"  name="fraction" disabled>
+          <br>
+          <br>
+          <br>
+          <button type="button" class="finish" disabled>注册</button>
+        </form>
+      </div>
+          
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/provide.json"></script>
+    <script>
+      $(function () {
+        // 编号校验是否合理且是否重复
+        $('input[name=provideid]').blur(function () {
+          let id = $(this).val()
+          if (!id.match(/^\d{10}$/)) {
+            $('input[name=provideid]').val('')
+            alert('供应商编号必须为10位数字！')
+            return // 直接返回以避免继续执行剩余的代码
+          }
+
+          // 检查编号是否重复
+          $.getJSON('../record/provide.json', function (data) {
+            let dis = false
+            $.each(data, function (index, item) {
+              if (id == item.provideid) {
+                alert('供应商编号重复！')
+                $('input[name=provideid]').val('')
+                dis = true
+                return false
+              }
+            })
+            if (!dis) {
+              $('input[name=providename]').prop('disabled', false)
+            }
+          })
+        })
+
+         //供应商名称检验（中文）
+         $('input[name=providename]').blur(() => {
+          let name = $('input[name=providename]').val()
+          if (!name.match(/^(?:[\u4e00-\u9fa5·]{2,16})$/)) {
+            $('input[name=providename]').val('')
+            alert('供应商名称必须为中文')
+          } else {
+            $('input[name=fraction]').prop('disabled', false)
+          }
+        })
+
+        //检验初始评分
+        $("input[name=fraction]").blur(() => {
+          let ans = $("input[name=fraction]").val()
+          if(!ans.match(/^([6-9]\.\d|10\.0)$/)) {
+            $('input[name=fraction]').val('')
+            alert('初始评分为 6.0 ~ 10.0 ！')
+          } else {
+            $('.finish').prop('disabled', false)
+          }
+
+          //传递数据
+          $('.finish').click(() => {
+          alert('添加供应商成功！')
+          window.location.href = 'manageprovide.html'
+          // 检查是否取得正确数据，在控制台查看，检查前将上一条语句注释
+          // console.log($('input[name=provideid]').val())
+          // console.log($('input[name=providename]').val())
+          // console.log($('input[name=fraction]').val())
+        })
+        })
+      })
+    </script>
+  </body>
+</html>

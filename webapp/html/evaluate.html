@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>制定订单</title>
+    <style>
+      .col-md-1 {
+        width: 8.33%;
+      }
+      .col-md-2 {
+        width: 16.67%;
+      }
+      .col-md-3 {
+        width: 25%;
+      }
+      .col-md-4 {
+        width: 33.33%;
+      }
+      .col-md-5 {
+        width: 41.67%;
+      }
+      .col-md-6 {
+        width: 50%;
+      }
+      .col-md-7 {
+        width: 58.33%;
+      }
+      .col-md-8 {
+        width: 66.67%;
+      }
+      .col-md-9 {
+        width: 75%;
+      }
+      .col-md-10 {
+        width: 83.33%;
+      }
+      .col-md-11 {
+        width: 91.67%;
+      }
+      .col-md-12 {
+        width: 100%;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        margin: auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .header {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      .nav {
+        display: flex;
+        border: 2px solid #000;
+        border-radius: 8px;
+        margin-top: 5px;
+        justify-content: flex-end;
+      }
+      .nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding: 15px 20px;
+        border-radius: 8px;
+      }
+      .nav .right {
+        margin-left: auto;
+      }
+      .nav a:hover {
+        background-color: black;
+        color: white;
+      }
+      .nav a.now:hover {
+        background-color: white;
+        color: red;
+      }
+      .main {
+        border: 2px solid #000;
+        border-radius: 8px;
+        height: 100%;
+        margin: 5px 5px;
+        padding: 20px;
+        text-align: center;
+      }
+      .main h2 {
+        margin-bottom: 10px;
+      }
+      .main p {
+        font-size: 1.2em;
+        color: black;
+        text-indent: 2em;
+      }
+      .footer p {
+        text-align: center;
+      }
+      .table {
+        display: table;
+        width: 100%;
+        text-align: center;
+      }
+
+      .table-header {
+        display: table-row;
+        background: #4caf50;
+      }
+
+      .table-header-cell {
+        display: table-cell;
+        font-size: 1.2em;
+        padding: 5px;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+        padding: 5px;
+        border-bottom: 1px solid #000;
+      }
+
+      .table-row:hover {
+        background-color: #f2f2f2;
+      }
+      button {
+        display: inline-block;
+        padding: 15px 25px;
+        margin: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        opacity: 0.5;
+      }
+      .delete {
+        background-color: crimson;
+      }
+      .finish {
+        background-color: chartreuse;
+      }
+      button:hover {
+        opacity: 1;
+      }
+      .back {
+        position: relative;
+        left: 700px;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        bottom: 20px;
+        font-size: large;
+        border: 2px solid #000;
+        padding: 10px 15px;
+        border-radius: 12px;
+      }
+      button {
+        display: inline-block;
+        padding: 15px 25px;
+        margin: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        opacity: 0.5;
+      }
+      .delete {
+        background-color: crimson;
+      }
+      .finish {
+        background-color: chartreuse;
+      }
+      button:hover {
+        opacity: 1;
+      }
+      .inline {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="header col-md-12">
+          <h1>智控食链助手</h1>
+          <p>食品管理员</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nav col-md-12">
+          <a href="home.html">首页</a>
+          <a href="formulate.html">制定订单</a>
+          <a href="manage.html">管理订单</a>
+          <a href="#" style="color: red; font-weight: bolder" class="now">管理供应商</a>
+          <a href="recommend.html">智能推荐信息</a>
+          <a href="login.html" class="right">退出</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main col-md-12">
+          <h2>评价供应商</h2>
+          <a href="manageprovide.html" class="back">返回</a>
+          <div class="table" id="information">
+            <div class="table-header">
+              <div class="table-header-cell">供应商编号</div>
+              <div class="table-header-cell">供应商名称</div>
+              <div class="table-header-cell">历史订单</div>
+              <div class="table-header-cell">供应商评分</div>
+              <div class="table-header-cell">操作</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="footer col-md-12">
+          <p>东北林业大学第8小组</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/provide.json"></script>
+    <script>
+      $(function () {
+        $.getJSON('../record/provide.json', function (data) {
+          $.each(data, function (index, item) {
+            var row = $('<div>').addClass('table-row')
+            row.append($('<div>').addClass('table-cell').addClass('provideid').text(item.provideid))
+            row.append(
+              $('<div>').addClass('table-cell').addClass('providename').text(item.providename)
+            )
+            row.append($('<div>').addClass('table-cell').addClass('order').text(item.order))
+            row.append($('<div>').addClass('table-cell').text(item.fraction))
+            var inputElement = $('<input>').attr('type', 'number') // 先设置类型为number
+            inputElement.addClass('fraction')
+            inputElement.attr('min', '6.0')
+            inputElement.attr('max', '10.0')
+            inputElement.attr('step', '0.1')
+
+            row
+              .append(
+                $('<div>').addClass('inline').text('修改评分：').append(inputElement) // 现在添加<input>元素到<div>中
+              )
+              .append($('<button>').addClass('finish').text('完成'))
+
+            $('#information').append(row)
+          })
+        })
+
+        //点击完成按钮后生成供应商信息在控制台
+        $(document).on('click', '.finish', function () {
+          var row = $(this).closest('.table-row')
+
+          var provideid = row.find('.provideid').text()
+          var providename = row.find('.providename').text()
+          var order = row.find('.order').text()
+          var fraction = row.find('.fraction').val()
+
+          alert('评价供应商成功！')
+          console.log('Provide ID:', provideid)
+          console.log('Provide Name:', providename)
+          console.log('Order:', order)
+          console.log('Fraction:', fraction)
+        })
+      })
+    </script>
+  </body>
+</html>

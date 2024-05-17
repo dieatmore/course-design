@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>订单管理页面</title>
     <style>
       .col-md-1 {
         width: 8.33%;
@@ -88,9 +89,13 @@
       .main {
         border: 2px solid #000;
         border-radius: 8px;
-        height: 80vh;
+        height: 100%;
         margin: 5px 5px;
         padding: 20px;
+        text-align: center;
+      }
+      .main h2 {
+        margin-bottom: 10px;
       }
       .main p {
         font-size: 1.2em;
@@ -100,31 +105,65 @@
       .footer p {
         text-align: center;
       }
-      div {
+      .table {
+        display: table;
+        width: 100%;
         text-align: center;
       }
-      .main {
-        display: flex;
+
+      .table-header {
+        display: table-row;
+        background: #4caf50;
       }
-      .main a {
+
+      .table-header-cell {
+        display: table-cell;
+        font-size: 1.2em;
+        padding: 5px;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+        padding: 5px;
+        border-bottom: 1px solid #000;
+      }
+
+      .table-row:hover {
+        background-color: #f2f2f2;
+      }
+      button {
+        display: inline-block;
+        padding: 15px 25px;
+        margin: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        opacity: 0.5;
+      }
+      .delete {
+        background-color: crimson;
+      }
+      .finish {
+        background-color: chartreuse;
+      }
+      button:hover {
+        opacity: 1;
+      }
+      .back {
+        position: relative;
+        left: 700px;
         text-decoration: none;
         color: #000;
-      }
-      .query,
-      .add,
-      .delete,
-      .evaluate {
-        margin-top: 150px;
-        height: 250px;
+        font-weight: bold;
+        bottom: 20px;
+        font-size: large;
         border: 2px solid #000;
-        box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.4);
-        transition: transform 0.5s;
-      }
-      .query:hover,
-      .add:hover,
-      .delete:hover,
-      .evaluate:hover {
-        transform: scale(1.2);
+        padding: 10px 15px;
+        border-radius: 12px;
       }
     </style>
   </head>
@@ -148,31 +187,17 @@
       </div>
       <div class="row">
         <div class="main col-md-12">
-          <div class="col-md-1"></div>
-          <div class="query col-md-3">
-            <img src="../images/查询.png" alt="" />
-            <br />
-            <a href="">查看供应商信息</a>
+          <h2>管理订单</h2>
+          <a href="manageprovide.html" class="back">返回</a>
+          <div class="table" id="information">
+            <div class="table-header">
+              <div class="table-header-cell">供应商编号</div>
+              <div class="table-header-cell">供应商名称</div>
+              <div class="table-header-cell">历史订单</div>
+              <div class="table-header-cell">供应商评分</div>
+              <div class="table-header-cell">操作</div>
+            </div>
           </div>
-          <div class="col-md-1"></div>
-          <div class="add col-md-3">
-            <img src="../images/添加.png" alt="" />
-            <br />
-            <a href="">添加供应商</a>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="delete col-md-3">
-            <img src="../images/删除.png" alt="" />
-            <br />
-            <a href="">取消供应商</a>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="evaluate col-md-3">
-            <img src="../images/打分.png" alt="" />
-            <br />
-            <a href="">评价供应商</a>
-          </div>
-          <div class="col-md-1"></div>
         </div>
       </div>
       <div class="row">
@@ -182,19 +207,24 @@
       </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../record/provide.json"></script>
     <script>
       $(function () {
-        $('.add').click(() => {
-          window.location.href = 'addprovide.html'
+        $.getJSON('../record/provide.json', function (data) {
+          $.each(data, function (index, item) {
+            var row = $('<div>').addClass('table-row')
+            row.append($('<div>').addClass('table-cell').text(item.provideid))
+            row.append($('<div>').addClass('table-cell').text(item.providename))
+            row.append($('<div>').addClass('table-cell').text(item.order))
+            row.append($('<div>').addClass('table-cell').text(item.fraction))
+            row.append($('<button>').addClass('delete').text('取消供应商'))
+
+            $('#information').append(row)
+          })
         })
-        $('.query').click(() => {
-          window.location.href = 'queryprovide.html'
-        })
-        $('.delete').click(() => {
-          window.location.href = 'delete.html'
-        })
-        $('.evaluate').click(() => {
-          window.location.href = 'evaluate.html'
+        //点击取消按钮删除该信息，但不能保存数据
+        $(document).on('click', '.delete', function () {
+          $(this).closest('.table-row').remove()
         })
       })
     </script>
